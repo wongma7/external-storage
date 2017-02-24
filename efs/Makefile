@@ -35,8 +35,19 @@ container: build quick-container
 quick-container:
 	docker build -t docker.io/wongma7/efs-provisioner:latest .
 
-test:
+test: verify
 	go test `go list ./... | grep -v 'vendor'`
+
+verify:
+	@tput bold; echo Running gofmt:; tput sgr0
+	(gofmt -s -w -l `find . -type f -name "*.go" | grep -v vendor`) || exit 1
+	@tput bold; echo Running golint and go vet:; tput sgr0
+	for i in $$(find . -type f -name "*.go" | grep -v 'vendor\|minmax'); do \
+		golint --set_exit_status $$i; \
+		go vet $$i; \
+	done
+	@tput bold; echo Running verify-boilerplate; tput sgr0
+	../repo-infra/verify/verify-boilerplate.sh
 
 clean:
 	rm -rf .go
