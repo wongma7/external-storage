@@ -41,3 +41,6 @@ script:
   - make container
   - make test-integration
   - make test-e2e
+  - cd ../efs
+  - make container
+  - make test
