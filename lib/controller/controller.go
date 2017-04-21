@@ -689,9 +689,14 @@ func (ctrl *ProvisionController) provisionClaimOperation(claim *v1.PersistentVol
 	// Try to create the PV object several times
 	for i := 0; i < ctrl.createProvisionedPVRetryCount; i++ {
 		glog.V(4).Infof("provisionClaimOperation [%s]: trying to save volume %s", claimToClaimKey(claim), volume.Name)
-		if _, err = ctrl.client.Core().PersistentVolumes().Create(volume); err == nil {
+		if _, err = ctrl.client.Core().PersistentVolumes().Create(volume); err == nil || apierrs.IsAlreadyExists {
 			// Save succeeded.
-			glog.Infof("volume %q for claim %q saved", volume.Name, claimToClaimKey(claim))
+			if err != nil {
+				glog.V(3).Infof("volume %q for claim %q already exists, reusing", volume.Name, claimToClaimKey(claim))
+				err = nil
+			} else {
+				glog.Infof("volume %q for claim %q saved", volume.Name, claimToClaimKey(claim))
+			}
 			break
 		}
 		// Save failed, try again after a while.
@@ -944,9 +949,12 @@ func (ctrl *ProvisionController) scheduleOperation(operationName string, operati
 
 	err := ctrl.runningOperations.Run(operationName, operation)
 	if err != nil {
-		if goroutinemap.IsAlreadyExists(err) {
+		switch {
+		case goroutinemap.IsAlreadyExists(err):
 			glog.V(4).Infof("operation %q is already running, skipping", operationName)
-		} else {
+		case exponentialbackoff.IsExponentialBackoff(err):
+			glog.V(4).Infof("operation %q postponed due to exponential backoff", operationName)
+		default:
 			glog.Errorf("Error scheduling operaion %q: %v", operationName, err)
 		}
 	}
