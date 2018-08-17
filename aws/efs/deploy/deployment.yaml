@@ -8,6 +8,9 @@ apiVersion: extensions/v1beta1
 metadata:
   name: efs-provisioner
 spec:
+  selector:
+    matchLabels:
+      app: efs-provisioner
   replicas: 1
   strategy:
     type: Recreate 

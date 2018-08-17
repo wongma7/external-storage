@@ -4,6 +4,9 @@ metadata:
   name: cephfs-provisioner
   namespace: cephfs
 spec:
+  selector:
+    matchLabels:
+      app: cephfs-provisioner
   replicas: 1
   strategy:
     type: Recreate

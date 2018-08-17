@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: cephfs-provisioner
 spec:
+  selector:
+    matchLabels:
+      app: cephfs-provisioner
   replicas: 1
   strategy:
     type: Recreate

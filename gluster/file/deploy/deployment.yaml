@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: glusterfile-provisioner
 spec:
+  selector:
+    matchLabels:
+      app: glusterfile-provisioner
   replicas: 1
   strategy:
     type: Recreate
