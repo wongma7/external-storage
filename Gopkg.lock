@@ -366,8 +366,7 @@
   version = "v1.1.5"
 
 [[projects]]
-  branch = "master"
-  digest = "1:f2f93bc0faf9622d98cf8b6d1464a91516ec7afc85cad4eabfd61478529241c9"
+  digest = "1:1470218a5eaaffb2e831e6052640cb33463e969311ff8ccf7683406d1b9d0cd9"
   name = "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner"
   packages = [
     "allocator",
@@ -378,7 +377,7 @@
     "util",
   ]
   pruneopts = "UT"
-  revision = "6765b43e217930fdef11d26a93aef34c14cd0d55"
+  revision = "3b5cf15bb34e6a505460deda10d003edc8e5680d"
 
 [[projects]]
   digest = "1:933c3a3ae62b901b7dc4430113b5303eb69a496a98b1b70771942b272dd94bdf"
@@ -405,12 +404,12 @@
   version = "v1.0.1"
 
 [[projects]]
-  branch = "master"
-  digest = "1:7e54d070a99dc461a6e62a495a9e67c103960b343ba8e6d37535859cfd32ee65"
+  digest = "1:57689550840d285f2da9e85356a66e626592a8b6f1170d7f2482438e64fe82e3"
   name = "github.com/miekg/dns"
   packages = ["."]
   pruneopts = "UT"
-  revision = "b0dc93d2760ef438612a252a9e448d054d28b625"
+  revision = "d74956db7b5b20451796774572d0f5a0222e377a"
+  version = "v1.0.13"
 
 [[projects]]
   digest = "1:645110e089152bd0f4a011a2648fbb0e4df5977be73ca605781157ac297f50c4"
@@ -1258,8 +1257,8 @@
     "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller",
     "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/gidallocator",
     "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/mount",
+    "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/util",
     "github.com/magiconair/properties",
-    "github.com/miekg/dns",
     "github.com/mitchellh/mapstructure",
     "github.com/pborman/uuid",
     "github.com/powerman/rpc-codec/jsonrpc2",
@@ -1273,7 +1272,6 @@
     "golang.org/x/oauth2",
     "golang.org/x/oauth2/google",
     "golang.org/x/sys/unix",
-    "golang.org/x/time/rate",
     "google.golang.org/api/compute/v1",
     "google.golang.org/api/container/v1",
     "google.golang.org/api/googleapi",
@@ -1282,7 +1280,6 @@
     "k8s.io/api/batch/v1",
     "k8s.io/api/core/v1",
     "k8s.io/api/storage/v1",
-    "k8s.io/api/storage/v1beta1",
     "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1",
     "k8s.io/apiextensions-apiserver/pkg/client/clientset/clientset",
     "k8s.io/apimachinery/pkg/api/errors",
@@ -1301,7 +1298,6 @@
     "k8s.io/apimachinery/pkg/util/uuid",
     "k8s.io/apimachinery/pkg/util/validation",
     "k8s.io/apimachinery/pkg/util/validation/field",
-    "k8s.io/apimachinery/pkg/util/version",
     "k8s.io/apimachinery/pkg/util/wait",
     "k8s.io/client-go/informers",
     "k8s.io/client-go/kubernetes",
@@ -1312,13 +1308,9 @@
     "k8s.io/client-go/listers/storage/v1",
     "k8s.io/client-go/plugin/pkg/client/auth/gcp",
     "k8s.io/client-go/rest",
-    "k8s.io/client-go/testing",
     "k8s.io/client-go/tools/cache",
     "k8s.io/client-go/tools/clientcmd",
-    "k8s.io/client-go/tools/leaderelection",
-    "k8s.io/client-go/tools/leaderelection/resourcelock",
     "k8s.io/client-go/tools/record",
-    "k8s.io/client-go/tools/reference",
     "k8s.io/client-go/tools/remotecommand",
     "k8s.io/client-go/util/cert",
     "k8s.io/client-go/util/flowcontrol",
