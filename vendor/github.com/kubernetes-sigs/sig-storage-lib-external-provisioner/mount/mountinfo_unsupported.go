@@ -1,3 +1,5 @@
+// +build !windows,!linux,!freebsd,!solaris freebsd,!cgo solaris,!cgo
+
 /*
 Copyright 2018 The Kubernetes Authors.
 
@@ -14,45 +16,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package metrics
+package mount
 
 import (
-	"testing"
-
-	esUtil "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/util"
+	"fmt"
+	"runtime"
 )
 
-func TestCapacityBreakDown(t *testing.T) {
-	testcases := []struct {
-		capacityBytes  int64
-		expectedString string
-	}{
-		{
-			0,
-			"0G",
-		},
-		{
-			1,
-			"500G",
-		},
-		{
-			500 * esUtil.GiB,
-			"500G",
-		},
-		{
-			500*esUtil.GiB + 1,
-			"1000G",
-		},
-		{
-			1000*esUtil.GiB + 1,
-			"1500G",
-		},
-	}
-
-	for _, v := range testcases {
-		got := CapacityBreakDown(v.capacityBytes)
-		if got != v.expectedString {
-			t.Errorf("got %s, expected: %s", got, v.expectedString)
-		}
-	}
+func parseMountTable() ([]*Info, error) {
+	return nil, fmt.Errorf("mount.parseMountTable is not implemented on %s/%s", runtime.GOOS, runtime.GOARCH)
 }

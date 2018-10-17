@@ -366,6 +366,21 @@
   version = "v1.1.5"
 
 [[projects]]
+  branch = "master"
+  digest = "1:f2f93bc0faf9622d98cf8b6d1464a91516ec7afc85cad4eabfd61478529241c9"
+  name = "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner"
+  packages = [
+    "allocator",
+    "controller",
+    "controller/metrics",
+    "gidallocator",
+    "mount",
+    "util",
+  ]
+  pruneopts = "UT"
+  revision = "6765b43e217930fdef11d26a93aef34c14cd0d55"
+
+[[projects]]
   digest = "1:933c3a3ae62b901b7dc4430113b5303eb69a496a98b1b70771942b272dd94bdf"
   name = "github.com/lpabon/godbc"
   packages = ["."]
@@ -1240,6 +1255,9 @@
     "github.com/guelfey/go.dbus",
     "github.com/heketi/heketi/client/api/go-client",
     "github.com/heketi/heketi/pkg/glusterfs/api",
+    "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/controller",
+    "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/gidallocator",
+    "github.com/kubernetes-sigs/sig-storage-lib-external-provisioner/mount",
     "github.com/magiconair/properties",
     "github.com/miekg/dns",
     "github.com/mitchellh/mapstructure",
